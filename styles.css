@@ -1,0 +1,266 @@
+body {
+    font-family: Georgia, serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 20px;
+}
+
+body.dark-theme {
+    background-color: #121212;
+    color: #fff;
+}
+
+/* Rest of the dark theme styles */
+
+.switch-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+}
+
+.switch-label {
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+    background-color: #ccc;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.switch-label::before {
+    content: '';
+    display: block;
+    width: 18px;
+    height: 18px;
+    background-color: #fff;
+    border-radius: 50%;
+    transition: transform 0.3s;
+}
+
+#themeSwitch {
+    display: none;
+}
+
+#themeSwitch:checked+.switch-label {
+    background-color: #4285f4;
+}
+
+#themeSwitch:checked+.switch-label:before {
+    transform: translateX(20px);
+}
+
+
+.recipe-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding-top: 7vw;
+}
+
+.recipe-card {
+    width: 300px;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.recipe-card:hover {
+    transform: translateY(-5px);
+}
+
+.recipe-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.recipe-title {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.recipe-details {
+    font-size: 14px;
+    color: #555;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    margin-top: 30px;
+}
+
+.searchBar {
+    width: 400px;
+    border-radius: 8px 0 0 8px;
+}
+
+.search-container input[type=text] {
+    padding: 6px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    font-size: 17px;
+    border: none;
+}
+
+.search-container button {
+    padding: 6px 10px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    background: transparent;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+    border-radius: 0 8px 8px 0;
+}
+
+.search-container button:hover {
+    background: #ddd;
+    color: black;
+}
+
+.button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4285f4;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #1a73e8;
+}
+
+#searchInput {
+    width: 300px;
+    padding: 8px;
+    font-size: 16px;
+}
+
+#suggestionsList {
+    position: absolute;
+    top: 37%; /* Position the menu below the search bar */
+    left: 38.4%; /* Align the menu with the left edge of the search bar */
+    z-index: 1; /* Ensure the menu appears above other content */
+    background-color: #fff; /* Set background color */
+    border-radius: 4px; /* Add border radius */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow */
+    list-style: none;    
+    padding: 0;
+    width: 411px;
+}
+
+.suggestionItem {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.suggestionItem:hover {
+    background-color: lightgray;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    /* display: flex; */
+    /* justify-content: space-between; */
+    /* Align items at the beginning and end of the flex container */
+    left: 0;
+    height: 7vw;
+    background-image: url('img/bckimg.png');
+    background-size: cover;
+    /* Adjust the background image size */
+    background-position: top;
+    /* Center the background image */
+    /* Add any other styles you want */
+
+}
+
+.navbar a {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 1vw 2vw;
+    text-decoration: none;
+}
+
+.navbar a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.content {
+    padding: 16px;
+    margin-top: 30px;
+    /* Add margin to prevent content from being hidden under the navbar */
+}
+
+#similarRecipesContainer {
+    display: flex;
+    /* Set the display property to flex */
+    flex-wrap: wrap;
+    /* Allow the items to wrap to the next line if needed */
+    justify-content: center;
+    /* Align items to the center along the main axis */
+    gap: 20px;
+    /* Add some spacing between the items */
+}
+
+.complexSearchDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* height: 100vh; */
+    /* Optional: Adjust as needed */
+}
+
+.linkButton {
+    background: none;
+    border: none;
+    padding: 5px;
+    font: inherit;
+    color: white;
+    /* Set the text color */
+    text-decoration: underline;
+    /* Add underline */
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.linkButtonContainer {
+    position: absolute;
+    /* Set the position to absolute */
+    bottom: 10px;
+    /* Adjust as needed */
+    left: 5%;
+    /* Align them horizontally */
+}
+
+#filterCheckboxes {
+    display: none;
+    color: white;
+    bottom: 10px;
+    position: absolute;
+  }
+
+  .headerMiddle {
+    text-align: center;
+    margin-bottom: 5px;
+  }
+
+  .numberNutrients {
+    width: 50px;
+  }
