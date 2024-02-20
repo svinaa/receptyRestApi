@@ -2,7 +2,6 @@ body {
     font-family: Georgia, serif;
     background-color: #f7f7f7;
     margin: 0;
-    padding: 20px;
 }
 
 body.dark-theme {
@@ -10,7 +9,7 @@ body.dark-theme {
     color: #fff;
 }
 
-/* Rest of the dark theme styles */
+/* zbytek dark theme */
 
 .switch-container {
     position: fixed;
@@ -149,13 +148,13 @@ body.dark-theme {
 
 #suggestionsList {
     position: absolute;
-    top: 37%; /* Position the menu below the search bar */
-    left: 38.4%; /* Align the menu with the left edge of the search bar */
-    z-index: 1; /* Ensure the menu appears above other content */
-    background-color: #fff; /* Set background color */
-    border-radius: 4px; /* Add border radius */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow */
-    list-style: none;    
+    top: 37%;
+    left: 38.4%;
+    z-index: 1;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    list-style: none;
     padding: 0;
     width: 411px;
 }
@@ -175,16 +174,11 @@ body.dark-theme {
     width: 100%;
     /* display: flex; */
     /* justify-content: space-between; */
-    /* Align items at the beginning and end of the flex container */
     left: 0;
     height: 7vw;
     background-image: url('img/bckimg.png');
     background-size: cover;
-    /* Adjust the background image size */
     background-position: top;
-    /* Center the background image */
-    /* Add any other styles you want */
-
 }
 
 .navbar a {
@@ -204,18 +198,13 @@ body.dark-theme {
 .content {
     padding: 16px;
     margin-top: 30px;
-    /* Add margin to prevent content from being hidden under the navbar */
 }
 
 #similarRecipesContainer {
     display: flex;
-    /* Set the display property to flex */
     flex-wrap: wrap;
-    /* Allow the items to wrap to the next line if needed */
     justify-content: center;
-    /* Align items to the center along the main axis */
     gap: 20px;
-    /* Add some spacing between the items */
 }
 
 .complexSearchDiv {
@@ -224,7 +213,6 @@ body.dark-theme {
     align-items: center;
     justify-content: center;
     /* height: 100vh; */
-    /* Optional: Adjust as needed */
 }
 
 .linkButton {
@@ -233,34 +221,52 @@ body.dark-theme {
     padding: 5px;
     font: inherit;
     color: white;
-    /* Set the text color */
     text-decoration: underline;
-    /* Add underline */
     cursor: pointer;
     font-size: 16px;
 }
 
 .linkButtonContainer {
     position: absolute;
-    /* Set the position to absolute */
     bottom: 10px;
-    /* Adjust as needed */
     left: 5%;
-    /* Align them horizontally */
 }
 
-#filterCheckboxes {
+#moreOptionsSearch {
+    position: relative;
+    top: 7vw;
+    left: 0;
+    height: 10%;
+    width: 200px;
+    background-color: #f0f0f0;
+    padding: 20px;
+    box-sizing: border-box;
     display: none;
-    color: white;
-    bottom: 10px;
-    position: absolute;
-  }
+}
 
-  .headerMiddle {
+.headerMiddle {
     text-align: center;
     margin-bottom: 5px;
-  }
+}
 
-  .numberNutrients {
+.numberNutrients {
+    /* přidat nutrienty do prava */
     width: 50px;
-  }
+    right: 10%;
+    position: absolute;
+}
+
+.filterCheckboxes,
+.numberInputs {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.numberInputs li {
+    margin: 5px;
+}
+
+#buttonComplexSearch {
+    left: 20%;
+    position: relative;
+}

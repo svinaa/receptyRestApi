@@ -33,58 +33,87 @@
                         style="color: #ffffff;"></i></button>
             </div>
             <button class="linkButton" id="complexSearch">Podrobné vyhledávání</button>
-            <div id="filterCheckboxes" style="display: none;">
-                <div>
-                    <h3 class="headerMiddle">Strava</h3>
-                    <!-- Checkboxes for filters here -->
-                    <input type="checkbox" id="vegetarianCheckbox" value="glutenFree">
-                    <label for="vegetarianCheckbox">Vegetarian</label>
-                    <input type="checkbox" id="veganCheckbox" value="glutenFree">
-                    <label for="veganCheckbox">Vegan</label>
-                    <input type="checkbox" id="ketogenicCheckbox" value="glutenFree">
-                    <label for="ketogenicCheckbox">Ketogenic</label>
-                    <input type="checkbox" id="paleoCheckbox" value="glutenFree">
-                    <label for="paleoCheckbox">Vegan</label>
-                    <input type="checkbox" id="lowFODMAPCheckbox" value="glutenFree">
-                    <label for="lowFODMAPCheckbox">Low FODMAP</label> <!-- dosud je to &diet -->
-                    <h3 class="headerMiddle">Intolerance</h3>
-                    <input type="checkbox" id="glutenCheckbox" value="glutenFree">
-                    <label for="glutenCheckbox">Gluten</label>
-                    <input type="checkbox" id="dairyCheckbox" value="glutenFree">
-                    <label for="dairyCheckbox">Dairy</label>
-                    <input type="checkbox" id="peanutCheckbox" value="glutenFree">
-                    <label for="peanutCheckbox">Peanut</label>
-                    <input type="checkbox" id="seafoodCheckbox" value="glutenFree">
-                    <label for="seafoodCheckbox">Seafood</label>
-                    <input type="checkbox" id="soyCheckbox" value="glutenFree">
-                    <label for="soyCheckbox">Soy</label>
-                    <input type="checkbox" id="wheatCheckbox" value="glutenFree">
-                    <label for="wheatCheckbox">Wheat</label>
-                </div>
-                <div class="number-inputs">
-                    <h3 class="headerMiddle">Nutrienty</h3>
-                    <label for="sacharideNutrients">Sacharidy
-                        <input type="number" id="sacharideNutrients" class="numberNutrients" value="">g
-                    </label>
-                    <label for="sacharideNutrients">Tuky
-                        <input type="number" id="sacharideNutrients" class="numberNutrients" value="">g
-                    </label>
-                    <label for="sacharideNutrients">Proteiny
-                        <input type="number" id="sacharideNutrients" class="numberNutrients" value="">g
-                    </label>
-                    <label for="sacharideNutrients">Sůl
-                        <input type="number" id="sacharideNutrients" class="numberNutrients" value="">g
-                    </label>
-                    <button type="submit" id="buttonComplexSearch" class="button">Hledej <i
-                            class="fa-solid fa-magnifying-glass" style="color: #ffffff;"></i></button>
-                    <!-- Add more checkboxes as needed -->
-                </div>
-            </div>
         </div>
         <div class="switch-container">
             <input type="checkbox" id="themeSwitch">
             <label for="themeSwitch" class="switch-label"></label>
         </div>
+    </div>
+    <div id="moreOptionsSearch" style="display: none;">
+        <ul class="filterCheckboxes">
+                <h3 class="headerMiddle">Strava</h3>
+                <li>
+                    <input type="checkbox" id="vegetarianCheckbox" value="glutenFree">
+                    <label for="vegetarianCheckbox">Vegetarian</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="veganCheckbox" value="glutenFree">
+                    <label for="veganCheckbox">Vegan</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="ketogenicCheckbox" value="glutenFree">
+                    <label for="ketogenicCheckbox">Ketogenic</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="paleoCheckbox" value="glutenFree">
+                    <label for="paleoCheckbox">Vegan</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="lowFODMAPCheckbox" value="glutenFree">
+                    <label for="lowFODMAPCheckbox">Low FODMAP</label>
+                </li>
+                <h3 class="headerMiddle">Intolerance</h3>
+                <li>
+                    <input type="checkbox" id="glutenCheckbox" value="glutenFree">
+                    <label for="glutenCheckbox">Gluten</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="dairyCheckbox" value="glutenFree">
+                    <label for="dairyCheckbox">Dairy</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="peanutCheckbox" value="glutenFree">
+                    <label for="peanutCheckbox">Peanut</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="seafoodCheckbox" value="glutenFree">
+                    <label for="seafoodCheckbox">Seafood</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="soyCheckbox" value="glutenFree">
+                    <label for="soyCheckbox">Soy</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="wheatCheckbox" value="glutenFree">
+                    <label for="wheatCheckbox">Wheat</label>
+                </li>
+
+        </ul>
+        <h3 class="headerMiddle">Nutrienty</h3>
+        <ul class="numberInputs">
+            <li>
+                <label for="sacharideNutrients">Sacharidy
+                    <input type="number" id="sacharideNutrients" class="numberNutrients" value=""> (g)
+                </label>
+            </li>
+            <li>
+                <label for="sacharideNutrients">Tuky
+                    <input type="number" id="sacharideNutrients" class="numberNutrients" value=""> (g)
+                </label>
+            </li>
+            <li>
+                <label for="sacharideNutrients">Proteiny
+                    <input type="number" id="sacharideNutrients" class="numberNutrients" value=""> (g)
+                </label>
+            </li>
+            <li>
+                <label for="sacharideNutrients">Sůl
+                    <input type="number" id="sacharideNutrients" class="numberNutrients" value=""> (g)
+                </label>
+            </li>
+        </ul>
+        <button type="submit" id="buttonComplexSearch" class="button">Hledej <i
+        class="fa-solid fa-magnifying-glass" style="color: #ffffff;"></i></button>
     </div>
     <div id="results" class="recipe-list"></div>
 
