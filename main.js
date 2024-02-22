@@ -213,25 +213,60 @@ btnDessert.addEventListener('click', () => {
 // fetch typy jidel deezert, salát atd.
 function fetchRecipes(type) {
   makeAPIRequest(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&type=${type}`)
-  
+
 }
 
 //vetsi navbar pro filtry vyhledavani
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   const complexSearch = document.getElementById('complexSearch');
   const moreOptionsSearch = document.getElementById('moreOptionsSearch');
 
-  complexSearch.addEventListener('click', function() {
+  complexSearch.addEventListener('click', function () {
     if (moreOptionsSearch.style.display === 'none') {
       moreOptionsSearch.style.display = 'block';
-      
-      moreOptionsSearch.style.transition ='transform 5s ease';
-      moreOptionsSearch.style.transform = 'translateX(0)';
     } else {
-      moreOptionsSearch.style.transition ='transform 5s ease';
-      
-      moreOptionsSearch.style.transform = 'translateX(-100%)';
       moreOptionsSearch.style.display = 'none';
     }
   });
 });
+
+const buttonComplexSearch = document.getElementById('buttonComplexSearch');
+buttonComplexSearch.addEventListener('click', function() {
+  // Construct filters object based on user input
+  const filters = {
+    diet: [],
+    intolerances: [],
+    minCarbs: document.getElementById('carboNutrients').value,
+    minFat: document.getElementById('fatNutrients').value,
+    minProtein: document.getElementById('proteinNutrients').value,
+    minCalories: document.getElementById('caltNutrients').value
+  };
+
+// Iterate over each diet checkbox and add the checked ones to the filters object
+['paleo', 'vegetarian', 'vegan', 'lowFODMAP', 'ketogenic'].forEach(diet => {
+  if (document.getElementById(`${diet}Checkbox`).checked) {
+    filters.diet.push(diet);
+  }
+});
+
+['wheat', 'soy', 'seafood', 'peanut', 'dairy', 'gluten'].forEach(intolerances => {
+  if (document.getElementById(`${intolerances}Checkbox`).checked) {
+    filters.intolerances.push(intolerances);
+  }
+});
+
+  // Construct the API query string
+  const query = constructSearchQuery(filters);
+  makeAPIRequest(query);
+});
+
+function constructSearchQuery(filters) {
+  let query = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}`;
+  for (const key in filters) {
+    if (filters.hasOwnProperty(key)) {
+      query += `&${key}=${filters[key]}`;
+    }
+  }
+  console.log(query);
+  return query;
+}

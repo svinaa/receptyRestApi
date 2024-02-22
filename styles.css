@@ -53,14 +53,15 @@ body.dark-theme {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    padding-top: 7vw;
+    padding-top: 8vw;
+    margin: auto;
+    width: 80%;
 }
 
 .recipe-card {
-    width: 300px;
+    width: 285px;
     background-color: #fff;
     border-radius: 8px;
-    padding: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
     cursor: pointer;
@@ -225,6 +226,7 @@ body.dark-theme {
     text-decoration: underline;
     cursor: pointer;
     font-size: 16px;
+    font-weight: bold;
 }
 
 .linkButtonContainer {
@@ -238,7 +240,7 @@ body.dark-theme {
     top: 7vw;
     left: 0;
     height: 60%;
-    width: 200px;
+    width: 190px;
     background-color: #f0f0f0;
     padding: 20px;
     box-sizing: border-box;
@@ -253,7 +255,7 @@ body.dark-theme {
 .numberNutrients {
     /* přidat nutrienty do prava */
     width: 50px;
-    right: 10%;
+    right: 6%;
     position: absolute;
 }
 
