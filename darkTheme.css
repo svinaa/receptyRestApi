@@ -1,0 +1,44 @@
+.switch-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+}
+
+.switch-label {
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+    background-color: #ccc;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.switch-label::before {
+    content: '';
+    display: block;
+    width: 18px;
+    height: 18px;
+    background-color: #fff;
+    border-radius: 50%;
+    transition: transform 0.3s;
+}
+
+#themeSwitch {
+    display: none;
+}
+
+#themeSwitch:checked+.switch-label {
+    background-color: #4285f4;
+}
+
+#themeSwitch:checked+.switch-label:before {
+    transform: translateX(20px);
+}
+
+body.dark-theme {
+    background-color: #121212;
+    .recipe-card {
+        background-color: #9696967c;
+        color: white;
+    }
+}
