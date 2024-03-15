@@ -1,67 +1,12 @@
 import apiKey from "./apiKey.js"
+import { makeAPIRequest } from "./api.js";
 
-// funkce pro api request pro recipe card
-function makeAPIRequest(url) {
-  fetch(url)
-    .then(response => response.json())
-    .then(data => {
-      displayResults(data);
-    })
-    .catch(error => {
-      console.error('Error:', error);
-    });
-}
 
-// random recipes every time the user visits
-/* document.addEventListener('DOMContentLoaded', function () {
-  makeAPIRequest(`https://api.spoonacular.com/recipes/random?apiKey=${apiKey}&number=3`);
-}); */
+  // random recipes every time the user visits
+  /* document.addEventListener('DOMContentLoaded', function () {
+    makeAPIRequest(`https://api.spoonacular.com/recipes/random?apiKey=${apiKey}&number=3`);
+  }); */
 
-//function for recipe cards
-function displayResults(data) {
-  const resultsContainer = document.getElementById('results');
-  resultsContainer.innerHTML = '';
-  let recipesArray;
-
-  if (data.recipes) {
-    recipesArray = data.recipes;
-  } else if (data.results) {
-    recipesArray = data.results;
-  } else {
-    console.error('Error: Invalid or missing data in the API response');
-    return;
-  }
-
-  if (recipesArray && recipesArray.length > 0) {
-    recipesArray.forEach(recipe => {
-      const card = document.createElement('div');
-      card.classList.add('recipe-card');
-      card.id = recipe.id;
-
-      const image = document.createElement('img');
-      image.classList.add('recipe-image');
-      image.src = recipe.image;
-      image.alt = recipe.title;
-
-      const title = document.createElement('h3');
-      title.classList.add('recipe-title');
-      title.textContent = recipe.title;
-
-      const details = document.createElement('p');
-      details.classList.add('recipe-details');
-
-      card.appendChild(image);
-      card.appendChild(title);
-      card.appendChild(details);
-
-      resultsContainer.appendChild(card);
-    });
-  } else {
-    const noResultsMessage = document.createElement('p');
-    noResultsMessage.textContent = 'No recipes found. Please try a different search term.';
-    resultsContainer.appendChild(noResultsMessage);
-  }
-}
 //zmena
 const searchBar = document.getElementById('searchBar');
 const suggestionsList = document.getElementById('suggestionsList');
