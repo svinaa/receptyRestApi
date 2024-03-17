@@ -12,5 +12,10 @@ export function makeAPIRequest(url) {
       });
   }
   
-
+// fetch recipe suggestions //funguje
+export async function fetchSuggestions(query) {
+  const response = await fetch(`https://api.spoonacular.com/recipes/autocomplete?apiKey=${apiKey}&query=${query}`);
+  const data = await response.json();
+  return data; //odstraneno .suggestions
+}
 
