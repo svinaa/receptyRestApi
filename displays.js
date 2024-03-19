@@ -85,3 +85,43 @@ export function displayRecipeDetails(recipeDetails) {
   recipeDetailsContainer.appendChild(image);
 
 }
+
+// otevreni modalu
+export function openModal(imageSrc) {
+  const modalContainer = document.getElementById('modalContainer');
+  const modalImage = document.getElementById('modalImage');
+
+  modalImage.src = imageSrc;
+  modalContainer.style.display = 'block';
+}
+
+export function closeModal() {
+  const modalContainer = document.getElementById('modalContainer');
+  modalContainer.style.display = 'none';
+}
+
+// zobrazeni podobnych receptu
+export function displaySimilarRecipes(similarRecipes) {
+  const similarRecipesContainer = document.getElementById('similarRecipesContainer');
+  similarRecipesContainer.innerHTML = '';
+
+  similarRecipes.forEach(recipe => {
+      const card = document.createElement('div');
+      card.classList.add('recipe-card');
+      card.id = recipe.id;
+
+      const title = document.createElement('h3');
+      title.classList.add('recipe-title');
+      title.textContent = recipe.title;
+
+      card.appendChild(title);
+
+      // klik otevře nový panel
+      card.addEventListener('click', function () {
+          const detailsUrl = `recipeDetails.html?recipeId=${recipe.id}`;
+          window.open(detailsUrl, '_blank');
+      });
+
+      similarRecipesContainer.appendChild(card);
+  });
+}

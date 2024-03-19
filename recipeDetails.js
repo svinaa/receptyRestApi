@@ -1,5 +1,8 @@
 import apiKey from "./apiKey.js"
+import { fetchSimilarRecipes } from "./search.js";
+import { openModal, closeModal } from "./displays.js";
 
+//sem vlozit recipe details listener 
 document.addEventListener('DOMContentLoaded', function () {
     // Fetch a zobrazeni detailu
     const urlParams = new URLSearchParams(window.location.search);
@@ -76,67 +79,12 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-// otevreni modalu
-function openModal(imageSrc) {
-    const modalContainer = document.getElementById('modalContainer');
-    const modalImage = document.getElementById('modalImage');
-
-    modalImage.src = imageSrc;
-    modalContainer.style.display = 'block';
-}
-
 document.addEventListener('DOMContentLoaded', function () {
     const closeButton = document.querySelector('.close');
     if (closeButton) {
         closeButton.addEventListener('click', closeModal);
     }
 });
-
-function closeModal() {
-    const modalContainer = document.getElementById('modalContainer');
-    modalContainer.style.display = 'none';
-}
-
-// podobne recepty
-function fetchSimilarRecipes(recipeId) {
-    const apiUrl = `https://api.spoonacular.com/recipes/${recipeId}/similar?apiKey=${apiKey}&number=4`;
-
-    fetch(apiUrl)
-        .then(response => response.json())
-        .then(data => {
-            console.log(data);
-            displaySimilarRecipes(data);
-        })
-        .catch(error => {
-            console.error('Error fetching similar recipes:', error);
-        });
-}
-
-// zobrazeni podobnych receptu
-function displaySimilarRecipes(similarRecipes) {
-    const similarRecipesContainer = document.getElementById('similarRecipesContainer');
-    similarRecipesContainer.innerHTML = '';
-
-    similarRecipes.forEach(recipe => {
-        const card = document.createElement('div');
-        card.classList.add('recipe-card');
-        card.id = recipe.id;
-
-        const title = document.createElement('h3');
-        title.classList.add('recipe-title');
-        title.textContent = recipe.title;
-
-        card.appendChild(title);
-
-        // klik otevře nový panel
-        card.addEventListener('click', function () {
-            const detailsUrl = `recipeDetails.html?recipeId=${recipe.id}`;
-            window.open(detailsUrl, '_blank');
-        });
-
-        similarRecipesContainer.appendChild(card);
-    });
-}
 
 // volání fetchSimilarRecipes
 document.addEventListener('DOMContentLoaded', function () {
@@ -149,3 +97,4 @@ document.addEventListener('DOMContentLoaded', function () {
         console.error('Recipe ID not found in the URL.');
     }
 });
+

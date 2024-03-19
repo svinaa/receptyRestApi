@@ -1,12 +1,12 @@
 import apiKey from "./apiKey.js"
-import { displaySuggestions, displayRecipeDetails, displayResults } from "./displays.js";
+import { displaySuggestions, displayRecipeDetails, openModal, closeModal } from "./displays.js";
 import { makeAPIRequest, fetchSuggestions } from "./api.js";
-import { fetchRecipes, constructSearchQuery } from "./search.js";
+import { fetchRecipes, constructSearchQuery, fetchSimilarRecipes, searchRecipe } from "./search.js";
 
-  // random recipes every time the user visits
-  /* document.addEventListener('DOMContentLoaded', function () {
-    makeAPIRequest(`https://api.spoonacular.com/recipes/random?apiKey=${apiKey}&number=3`);
-  }); */
+// random recipes every time the user visits
+/* document.addEventListener('DOMContentLoaded', function () {
+  makeAPIRequest(`https://api.spoonacular.com/recipes/random?apiKey=${apiKey}&number=3`);
+}); */
 
 // vyhledavani u dropdown menu
 const searchBar = document.getElementById('searchBar');
@@ -44,13 +44,10 @@ resultsContainer.addEventListener('click', function (event) {
 
     if (recipeCard) {
         const recipeId = recipeCard.getAttribute('id');
-        const title = recipeCard.querySelector('.recipe-title').textContent; //nove
-        const image = recipeCard.querySelector('.recipe-image').src;
 
         // odkaz na detaily receptu
         const detailsUrl = `recipeDetails.html?recipeId=${recipeId}`;
 
-        console.log(detailsUrl);
         window.open(detailsUrl, '_blank');
 
         fetch(detailsUrl)   //fetch
@@ -138,4 +135,37 @@ buttonComplexSearch.addEventListener('click', function () {
     const query = constructSearchQuery(filters);
     makeAPIRequest(query);
 });
+
+  // Event listener for the search button
+  document.getElementById('searchButton').addEventListener('click', function() {
+    const searchQuery = document.getElementById('searchBar').value.trim();
+    if (searchQuery) {
+      // Construct the URL for the home page with the search query as a parameter
+      const url = `index.html?search=${encodeURIComponent(searchQuery)}`;
+      // Open a new tab with the home page
+      window.open(url, '_blank');
+    }
+  });
+
+  document.addEventListener('DOMContentLoaded', function() {
+    // Function to parse URL parameters
+    function getUrlParameter(name) {
+      name = name.replace(/[\[\]]/g, '\\$&');
+      const regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)');
+      const results = regex.exec(window.location.href);
+      if (!results) return null;
+      if (!results[2]) return '';
+      return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }
+
+    // Retrieve the search query from URL parameters
+    const searchQuery = getUrlParameter('search');
+    if (searchQuery) {
+      // Perform a recipe search based on the search query
+      // You'll need to implement the recipe search functionality here
+      // Fetch the corresponding recipe cards and display them on the page
+      searchRecipe();
+    }
+  });
+
 

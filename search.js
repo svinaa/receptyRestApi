@@ -1,5 +1,7 @@
 import apiKey from "./apiKey.js";
 import { makeAPIRequest } from "./api.js";
+import { displaySimilarRecipes } from "./displays.js";
+
 export function searchRecipe(query) {
   const searchBar = document.getElementById('searchBar');
   if (query) {
@@ -27,4 +29,19 @@ export function constructSearchQuery(filters) {
   }
   console.log(query);
   return query;
+}
+
+// podobne recepty
+export function fetchSimilarRecipes(recipeId) {
+  const apiUrl = `https://api.spoonacular.com/recipes/${recipeId}/similar?apiKey=${apiKey}&number=4`;
+
+  fetch(apiUrl)
+      .then(response => response.json())
+      .then(data => {
+          console.log(data);
+          displaySimilarRecipes(data);
+      })
+      .catch(error => {
+          console.error('Error fetching similar recipes:', error);
+      });
 }
