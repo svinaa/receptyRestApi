@@ -120,56 +120,78 @@
   </div>
   <div id="results" class="recipe-list"></div>
 </div>
-  <div id="recipeDetailsContainer">
-    <h2 id="recipeTitle"></h2>
-    <div class="details-container">
-      <img id="recipeImage" alt="Recipe Image">
-      <div class="propertyTableContainer">
-        <table id="recipeInfoTable">
-          <tr>
-            <th>Diet</th>
-            <th></th>
-          </tr>
-        </table>
+  <div class="recipeDetailsMainContainer">
+    <div id="recipeDetailsContainer">
+      <h2 id="recipeTitle"></h2>
+      <div class="details-container">
+        <img id="recipeImage" alt="Recipe Image">
+        <div class="propertyTableContainer">
+          <table id="recipeInfoTable">
+            <tr>
+              <th>Diet</th>
+              <th></th>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div id="modalContainer">
+        <div id="modalContent">
+          <span class="close">&times;</span>
+          <img id="modalImage" alt="Recipe Image">
+        </div>
       </div>
     </div>
-    <div id="modalContainer">
-      <div id="modalContent">
-        <span class="close">&times;</span>
-        <img id="modalImage" alt="Recipe Image">
+    <div class="ingredientsAndNutrientsContainer">
+      <div class="recipeIngredients">
+        <h3>Ingredience</h3>
+        <ul id="ingredientsList"></ul>
+      </div>
+      <div class="nutrientsContainer">
+        <div>
+          <h3><br></h3>
+          <table id="nutrientsTable">
+            <tr>
+              <th>Nutrients</th>
+              <th>Value</th>
+            </tr>
+          </table>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="ingredientsAndNutrientsContainer">
-    <div class="recipeIngredients">
-      <h3>Ingredience</h3>
-      <ul id="ingredientsList"></ul>
+    <div id="recipeInstructions"></div>
+    <div class="recipeSimilarContainer">
+      <h3>Similar</h3>
+      <div id="similarRecipesContainer" ></div>
     </div>
-    <div class="nutrientsContainer">
-      <div>
-        <h3><br></h3>
-        <table id="nutrientsTable">
-          <tr>
-            <th>Nutrients</th>
-            <th>Value</th>
-          </tr>
-        </table>
-      </div>
-    </div>
-  </div>
-  <div id="recipeInstructions"></div>
-  <div class="recipeSimilarContainer">
-    <h3>Similar</h3>
-    <div id="similarRecipesContainer" ></div>
   </div>
 
   <script type="module" src="recipeDetails.js"></script>
-  <script type="module" src="main.js>"></script>
   <script src="darkTheme.js"></script>
   <script type="module" src="api.js"></script>
   <script type="module" src="search.js"></script>
   <script type="module" src="displays.js"></script>
   <script type="module" src="listeners.js"></script>
+  <!-- Add this script to handle dark mode -->
+<script>
+  // Function to toggle dark mode
+  function toggleDarkMode() {
+      const body = document.body;
+      body.classList.toggle('dark-mode');
+
+      // Store the dark mode state in local storage
+      const isDarkModeEnabled = body.classList.contains('dark-mode');
+      localStorage.setItem('darkModeEnabled', isDarkModeEnabled);
+  }
+
+  // Check if dark mode is enabled in local storage and apply it
+  document.addEventListener('DOMContentLoaded', function () {
+      const isDarkModeEnabled = localStorage.getItem('darkModeEnabled') === 'true';
+      if (isDarkModeEnabled) {
+          document.body.classList.add('dark-mode');
+      }
+  });
+</script>
+
 </body>
 
 </html>

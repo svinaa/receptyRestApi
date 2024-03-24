@@ -1,13 +1,19 @@
 import apiKey from "./apiKey.js"
-import { fetchSimilarRecipes } from "./search.js";
+import { fetchSimilarRecipes, searchRecipeClickedButton } from "./search.js";
 import { openModal, closeModal } from "./displays.js";
-
+  
+// Check if dark mode is enabled in local storage and apply it
+  document.addEventListener('DOMContentLoaded', function () {
+    const isDarkModeEnabled = localStorage.getItem('darkThemeEnabled') === 'true';
+    if (isDarkModeEnabled) {
+        document.body.classList.add('dark-theme');
+    }
+});
 //sem vlozit recipe details listener 
 document.addEventListener('DOMContentLoaded', function () {
     // Fetch a zobrazeni detailu
     const urlParams = new URLSearchParams(window.location.search);
     const recipeId = urlParams.get('recipeId');
-    console.log(recipeId);
 
     if (recipeId) {
         fetch(`https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=${apiKey}&includeNutrition=true`)

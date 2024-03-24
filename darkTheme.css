@@ -35,10 +35,13 @@
     transform: translateX(20px);
 }
 
-body.dark-theme {
+.dark-theme {
     background-color: #121212;
+    color: white;
     .recipe-card {
         background-color: #9696967c;
-        color: white;
+    }
+    #nutrientsTable th, #recipeInfoTable th {
+        color: #535353;
     }
 }

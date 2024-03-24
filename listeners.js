@@ -1,7 +1,7 @@
-import apiKey from "./apiKey.js"
-import { displaySuggestions, displayRecipeDetails, openModal, closeModal } from "./displays.js";
+import { displaySuggestions, displayRecipeDetails } from "./displays.js";
 import { makeAPIRequest, fetchSuggestions } from "./api.js";
-import { fetchRecipes, constructSearchQuery, fetchSimilarRecipes, searchRecipe } from "./search.js";
+import { fetchRecipes, constructSearchQuery, searchRecipeClickedButton } from "./search.js";
+
 
 // random recipes every time the user visits
 /* document.addEventListener('DOMContentLoaded', function () {
@@ -23,18 +23,7 @@ searchBar.addEventListener('input', async () => {
 
 // Event listener tlačítko pro hledani receptu
 const button = document.getElementById('button');
-button.addEventListener('click', () => {
-    const searchBar = document.getElementById('searchBar');
-    const query = searchBar.value.trim();
-
-    if (query) {
-        const url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&query=${query}`;
-        makeAPIRequest(url);
-        searchBar.value = "";
-    } else {
-        alert('Please enter a search query.');
-    }
-});
+button.addEventListener('click', searchRecipeClickedButton);
 
 // Event listener pro jednotlive recepty zobrazene jako karticky
 const resultsContainer = document.getElementById('results');
@@ -135,37 +124,5 @@ buttonComplexSearch.addEventListener('click', function () {
     const query = constructSearchQuery(filters);
     makeAPIRequest(query);
 });
-
-  // Event listener for the search button
-  document.getElementById('searchButton').addEventListener('click', function() {
-    const searchQuery = document.getElementById('searchBar').value.trim();
-    if (searchQuery) {
-      // Construct the URL for the home page with the search query as a parameter
-      const url = `index.html?search=${encodeURIComponent(searchQuery)}`;
-      // Open a new tab with the home page
-      window.open(url, '_blank');
-    }
-  });
-
-  document.addEventListener('DOMContentLoaded', function() {
-    // Function to parse URL parameters
-    function getUrlParameter(name) {
-      name = name.replace(/[\[\]]/g, '\\$&');
-      const regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)');
-      const results = regex.exec(window.location.href);
-      if (!results) return null;
-      if (!results[2]) return '';
-      return decodeURIComponent(results[2].replace(/\+/g, ' '));
-    }
-
-    // Retrieve the search query from URL parameters
-    const searchQuery = getUrlParameter('search');
-    if (searchQuery) {
-      // Perform a recipe search based on the search query
-      // You'll need to implement the recipe search functionality here
-      // Fetch the corresponding recipe cards and display them on the page
-      searchRecipe();
-    }
-  });
 
 
